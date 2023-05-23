@@ -1,0 +1,11 @@
+import pandas as pd
+
+df=pd.read_csv("/content/sample_data/california_housing_test.csv")
+#syntax to get desired cols :
+''' data_frame['needed_col_name'][data_frame['contional_col_name']:condition]'''
+print(df['housing_median_age'][df['median_income']>4])
+
+#to get the mean of the median housing age
+print(df['housing_median_age'].mean())
+# Data wrangling/ Data Munging
+df.fillna(0,inplace=True)
