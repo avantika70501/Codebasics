@@ -1,0 +1,13 @@
+#address book
+book={}
+book['tom']={'name':'tom','address':'kothrud','phone':9898989}
+book['bob']={'name':'bob','address':'katraj','phone':9898987}
+
+import json
+s=json.dumps(book)
+print(s)
+
+#json is a data exchange format (like XML)
+#once data is converted into json format, you write it in a file and use C++ or javascript to read the contents of file successfully
+#json.dumps(): converts dictionary to string
+#json.loads():converts string to dictionary
