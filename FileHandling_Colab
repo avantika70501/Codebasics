@@ -1,0 +1,6 @@
+f=open("/content/sample_data/veg.txt",'w')
+s="potato , tomato"
+f.write(s)
+f=open("/content/sample_data/veg.txt",'r')
+w=f.read()
+print(w)
