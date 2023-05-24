@@ -9,3 +9,20 @@ print(df['housing_median_age'][df['median_income']>4])
 print(df['housing_median_age'].mean())
 # Data wrangling/ Data Munging
 df.fillna(0,inplace=True)
+
+# to print first 5 info of the dataframe :
+df.head()
+
+# to print first n info of the dataframe :
+df.head(n)
+
+# to print last 5 info of the dataframe:
+df.tail()
+
+# slicing and indexing can also be used in dataframes
+print( df[2:5] )
+
+# df.describe() is used to print the statistics about the dataframe df
+
+# to print all data in a particular cell, using a condition :
+df[ df.col_name == df.col_name.max() ]
