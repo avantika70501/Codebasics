@@ -1,0 +1,16 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import linear_model
+
+df=pd.read_csv("/content/housing_price.csv")
+
+plt.xlabel('area (sqr ft)')
+plt.ylabel('price (US $)')
+%matplotlib inline
+plt.scatter(df.area,df.price)
+
+reg=linear_model.LinearRegression()
+reg.fit(df[['area']],df.price)
+
+reg.predict(3300)
