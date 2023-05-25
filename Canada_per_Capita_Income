@@ -1,0 +1,29 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import linear_model
+
+df2=pd.read_csv("/content/Canada_Per_Capita_Income.csv")
+
+plt.xlabel('year')
+plt.ylabel('per capita income (US$)')
+%matplotlib inline
+plt.scatter(df2.year,df2.per_capita_income)
+
+reg=linear_model.LinearRegression()
+reg.fit(df2[['year']],df2.per_capita_income)
+
+reg.predict(2020)
+
+d=pd.read_csv('year.csv')
+d.head(10)
+p=reg.predict(d)
+d['per_capita_income']=p
+d.to_csv("prediction.csv",index=False)
+
+%matplotlib inline
+plt.xlabel('year',fontsize=20)
+plt.ylabel('per_capita_income',fontsize=20)
+plt.scatter(df.year,df.per_capita_income, color="red",marker='+')
+plt.plot(df.year,reg.predict(df[['year']]),color="blue")
+
