@@ -1,0 +1,28 @@
+import pandas as pd
+import numpy as np
+import matplotlib as plt
+from sklearn import linear_model
+from word2number import w2n
+import math
+
+pip install word2number
+
+# reading the CSV file :
+df=pd.read_csv('/content/Hiring.csv')
+
+# performing Data Munging by filling empty experience values with zero and converting string values to numeric values
+df['experience'] = df['experience'].fillna('zero')
+df['experience'] = df['experience'].apply(w2n.word_to_num)
+
+# Fill missing test values using Median of the Test Values
+median_test=math.floor(df.test_score.median())
+df['test_score']=df['test_score'].fillna(median_test)
+
+# forming the linear regression using multiple variable equation
+# y= m1x1 + m2x2 + m3x3 + b
+reg=linear_model.LinearRegression()
+reg.fit(df[['experience','test_score','interview_score']],df.salary)
+
+# performing prediction and printing predicted values
+print(reg.predict([[w2n.word_to_num('two'),9.0,6]]))
+print(reg.predict([[w2n.word_to_num('twelve'),10,10]]))
